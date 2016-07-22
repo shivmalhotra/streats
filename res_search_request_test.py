@@ -10,13 +10,30 @@ r = requests.get(res_search_url+'method=both&street-address=95+wall+street,+new+
 
 restaurants = json.loads(r.content)['restaurants']
 
-print(restaurants[2]['name'])
 
-res_menu_url = 'https://api.eatstreet.com/publicapi/v1/restaurant/'+str(restaurants[2]['apiKey'])+'/menu?includeCustomizations=false'
+# print(restaurants[2]['name'])
 
-r = requests.get(res_menu_url, headers=headers)
+# res_menu_url = 'https://api.eatstreet.com/publicapi/v1/restaurant/'+str(restaurants[2]['apiKey'])+'/menu?includeCustomizations=false'
 
-menu_items = json.loads(r.content)
+# r = requests.get(res_menu_url, headers=headers)
+
+# menu_items = json.loads(r.content)
 
 
-pprint(menu_items[0])
+# pprint(menu_items[0])
+
+desired_food = "sushi"
+
+valid_res = []
+
+for r in restaurants:
+	for ft in [foodType.lower() for foodType in r['foodTypes']]:
+		if desired_food in ft:
+			valid_res.append(r)
+			#break so it doesn't append twice
+			break
+
+for r in valid_res:
+	print r['name']
+
+
