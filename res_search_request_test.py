@@ -10,9 +10,9 @@ r = requests.get(res_search_url+'method=both&street-address=95+wall+street,+new+
 
 restaurants = json.loads(r.content)['restaurants']
 
-print(restaurants[0]['name'])
+print(restaurants[2]['name'])
 
-res_menu_url = 'https://api.eatstreet.com/publicapi/v1/restaurant/'+str(restaurants[0]['apiKey'])+'/menu?includeCustomizations=false'
+res_menu_url = 'https://api.eatstreet.com/publicapi/v1/restaurant/'+str(restaurants[2]['apiKey'])+'/menu?includeCustomizations=false'
 
 r = requests.get(res_menu_url, headers=headers)
 
