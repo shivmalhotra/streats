@@ -1,6 +1,7 @@
 import requests
 import json
 from pprint import pprint
+from restaurants_filter import resFilter
 
 headers = {'X-Access-Token': 'b6832dabf2b76e48'}
 
@@ -22,18 +23,16 @@ restaurants = json.loads(r.content)['restaurants']
 
 # pprint(menu_items[0])
 
-desired_food = "sushi"
 
-valid_res = []
 
-for r in restaurants:
-	for ft in [foodType.lower() for foodType in r['foodTypes']]:
-		if desired_food in ft:
-			valid_res.append(r)
-			#break so it doesn't append twice
-			break
+restaurant_filter = resFilter(restaurants)
 
-for r in valid_res:
+for r in restaurant_filter.foodType("sushi"):
 	print r['name']
+
+
+
+
+	
 
 
