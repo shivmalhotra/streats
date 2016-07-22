@@ -18,4 +18,5 @@ r = requests.get(res_menu_url, headers=headers)
 
 menu_items = json.loads(r.content)
 
+
 pprint(menu_items[0])
