@@ -1,0 +1,5 @@
+https://developer.spotify.com/web-api/endpoint-reference/
+
+http://docs.themoviedb.apiary.io/#reference/guest-sessions
+
+https://developers.eatstreet.com/
