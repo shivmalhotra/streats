@@ -25,8 +25,19 @@ class Address:
 
 class Restaurant:
 
-	def __init__(self):
+# 	string[]foodTypes
+# boolean offersDelivery
+# number deliveryPrice
+# number deliveryMin
+# Minimum subtotal requirement for free delivery. If the restaurant does not offer subtotal-dependent free delivery, this field will be -1. number minFreeDelivery
+# boolean open
+# A map of day of the week to an array of hours for which the restaurant is open. eg: {"Monday": ["06:00 AM - 12:00 AM"]} Map<string, string[]>hours
+# An array of geographical zones to which the restaurant delivers DeliveryZone[]zones
 
+	def __init__(self, apiKey, name, address, city, state, zipcode):
+		self.apiKey = apiKey
+		self.name = name
+		self.address = Address(address, city, state, zipcode)
 
 	def getMenuItems(self):
 		res_menu_url = 'https://api.eatstreet.com/publicapi/v1/restaurant/'+self.apiKey+'/menu?includeCustomizations=false'
