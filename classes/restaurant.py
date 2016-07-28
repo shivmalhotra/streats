@@ -19,9 +19,14 @@ class Restaurant:
 #got rid of openNow because when api call is made maybe its open but then closes so for openNow should check time against hours of operation
 
 #when initializing need to check if json actually has a value for each some restaurants do not
-	def __init__(self, apiKey, name, address, city, state, zipcode, foodTypes, offersDelivery, deliveryPrice, deliveryMin, minFreeDelivery, hoursOfOperation):
+	def __init__(self, apiKey):
 
 		self.apiKey = apiKey
+		self.detailUrl = 'https://api.eatstreet.com/publicapi/v1/restaurant/'+self.apiKey
+
+		req = requests.get(self.detailUrl, headers=headers)
+
+
 		self.name = name
 		self.address = Address(address, city, state, zipcode)
 		self.foodTypes = foodTypes
@@ -31,6 +36,7 @@ class Restaurant:
 		self.minFreeDelivery = minFreeDelivery
 		self.hoursOfOperation = hoursOfOperation
 
+	#cache then refresh
 	def getMenuItems(self):
 		res_menu_url = 'https://api.eatstreet.com/publicapi/v1/restaurant/'+self.apiKey+'/menu?includeCustomizations=false'
 
@@ -44,6 +50,7 @@ class Restaurant:
 
 			return menu_items
 
+	#new request everytime
 	def isOpenNow(self):
 		pass
 

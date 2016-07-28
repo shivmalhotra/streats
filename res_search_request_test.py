@@ -24,27 +24,32 @@ restaurants = json.loads(r.content)['restaurants']
 
 # pprint(menu_items[0])
 
-pprint(restaurants[0])
+for r in restaurants:
+	if 'hours' in r:
+		pprint(r['hours'])
+		break
 
-print '-------------------------------'
+# pprint(restaurants[2]['open'])
+
+# print '-------------------------------'
 
 
-restaurant_filter = ResFilter(restaurants)
+# restaurant_filter = ResFilter(restaurants)
 
-for r in restaurant_filter.minPrice(5):
-	print r['name']
+# for r in restaurant_filter.minPrice(5):
+# 	print r['name']
 
 
-print '-------------------------------'
+# print '-------------------------------'
 
-t = time.time()
+# t = time.time()
 
-for r in restaurant_filter.foodItem("pad thai"):
-	print r['name']
+# for r in restaurant_filter.foodItem("pad thai"):
+# 	print r['name']
 
-print '-------------------------------'
+# print '-------------------------------'
 
-print time.time() - t
+# print time.time() - t
 
 
 	
