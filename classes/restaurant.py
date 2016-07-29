@@ -4,6 +4,12 @@ from address import Address
 
 headers = {'X-Access-Token': 'b6832dabf2b76e48'}
 
+def validateJsonVariable(json, obj):
+	if obj in json:
+		return json[obj]
+	else:
+		return None
+
 class Restaurant:
 
 # string[]foodTypes
@@ -26,11 +32,13 @@ class Restaurant:
 
 		req = requests.get(self.detailUrl, headers=headers)
 
+		addr = validateJsonVariable(req, 'address')
+		rest = validateJsonVariable(req, 'restaurant')
 
-		self.name = name
-		self.address = Address(address, city, state, zipcode)
-		self.foodTypes = foodTypes
-		self.offersDelivery = offersDelivery
+		self.name = validateJsonVariable(rest, 'name')
+		self.address = Address(addr['streetAddress'], addr['city'], addr['state'], addr['zip'])
+		self.foodTypes = validateJsonVariable(rest, 'foodTypes')
+		self.offersDelivery = validateJsonVariable(rest, 'offersDelivery')
 		self.deliveryPrice = deliveryPrice
 		self.deliveryMin = deliveryMin
 		self.minFreeDelivery = minFreeDelivery
