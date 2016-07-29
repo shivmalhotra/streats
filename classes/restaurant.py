@@ -39,10 +39,10 @@ class Restaurant:
 		self.address = Address(addr['streetAddress'], addr['city'], addr['state'], addr['zip'])
 		self.foodTypes = validateJsonVariable(rest, 'foodTypes')
 		self.offersDelivery = validateJsonVariable(rest, 'offersDelivery')
-		self.deliveryPrice = deliveryPrice
-		self.deliveryMin = deliveryMin
-		self.minFreeDelivery = minFreeDelivery
-		self.hoursOfOperation = hoursOfOperation
+		self.deliveryPrice = validateJsonVariable() deliveryPrice
+		self.deliveryMin = validateJsonVariable() deliveryMin
+		self.minFreeDelivery = validateJsonVariable() minFreeDelivery
+		self.hoursOfOperation = validateJsonVariable() hoursOfOperation
 
 	#cache then refresh
 	def getMenuItems(self):
