@@ -6,13 +6,22 @@ from pprint import pprint
 from restaurants_filter import ResFilter
 
 
-headers = {'X-Access-Token': 'b6832dabf2b76e48'}
+# headers = {'X-Access-Token': 'b6832dabf2b76e48'}
 
-res_search_url = 'https://api.eatstreet.com/publicapi/v1/restaurant/search?'
+# res_search_url = 'https://api.eatstreet.com/publicapi/v1/restaurant/search?'
 
-r = requests.get(res_search_url+'method=both&street-address=95+wall+street,+new+york,+NY,+10005',headers=headers)
+# r = requests.get(res_search_url+'method=both&street-address=95+wall+street,+new+york,+NY,+10005',headers=headers)
 
-restaurants = json.loads(r.content)['restaurants']
+# restaurants = json.loads(r.content)['restaurants']
+
+
+# headers = {'X-Access-Token': 'b6832dabf2b76e48'}
+
+# res_search_url = 'https://api.eatstreet.com/publicapi/v1/user/b6832dabf2b76e48/orders'
+
+# r = requests.get(res_search_url,headers=headers)
+# pprint(r)
+# orders = json.loads(r.content)['restaurants']
 
 
 
@@ -24,10 +33,10 @@ restaurants = json.loads(r.content)['restaurants']
 
 # pprint(menu_items[0])
 
-for r in restaurants:
-	if 'hours' in r:
-		pprint(r['hours'])
-		break
+# for r in restaurants:
+# 	if 'hours' in r:
+# 		pprint(r['hours'])
+# 		break
 
 # pprint(restaurants[2]['open'])
 
