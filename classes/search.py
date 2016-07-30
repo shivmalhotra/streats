@@ -19,18 +19,38 @@ def search(query):
 	
 def searchByName(name):
 	'''
-	filters list by name
+	filters list by name. returns restaurant list matching criteria
 	'''
 	restaurants = search(name)
+	nameMatches = []
+	for r in restaurants:
+		if name.lower() in r['name'].lower():
+			nameMatches.append(r)
+	return nameMatches
 
 def searchByCategory(category):
 	'''
 	filters list by category
 	'''
+	nameMatches = []
 	restaurants = search(category)
+	for r in restaurants:
+		for foodType in r['foodTypes']:
+			print foodType
+			if category.lower() in foodType.lower():
+				nameMatches.append(r)
+	return nameMatches
 
 def searchByItem(item):
 	'''
 	filters list by item
 	'''
 	restaurants = search(item)
+	nameMatches = []
+	for r in restaurants:
+		#grab menu items
+		#if item.lower() in menu.lower()
+			#nameMatches.append(r)
+		pass
+	return nameMatches
+
