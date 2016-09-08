@@ -6,10 +6,12 @@ Address:
 Restaurant:
     attributes:
     methods:
+        getMenuItems()
+
 
 User
     attributes:
     methods:
-
-
-
+        getLastOrder()
+        getApiKey()
+        
